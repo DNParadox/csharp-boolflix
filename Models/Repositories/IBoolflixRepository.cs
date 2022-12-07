@@ -8,5 +8,7 @@ namespace csharp_boolfix.Models.Repositories
         List<Profilo> All();
 
         Profilo GetById(int Id);
+
+        void Create(Profilo createProfile);
     }
 }

@@ -36,5 +36,31 @@ namespace csharp_boolfix.Controllers
 
             return View(profileDetail);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Profilo createProfile)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+        
+
+            if (createProfile == null)
+            {
+                return NotFound();
+            }
+
+            DbBoolflixRepository.Create(createProfile);
+
+            return RedirectToAction("Index");
+        }
     }
 }

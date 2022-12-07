@@ -1,5 +1,5 @@
 ﻿using csharp_boolfix.Data;
-
+using Microsoft.Build.Framework.Profiler;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.SqlServer.Server;
@@ -23,7 +23,14 @@ namespace csharp_boolfix.Models.Repositories
 
         public Profilo GetById(int Id)
         {
-            return db.Profili.FirstOrDefault();
+            return db.Profili.Where(profile => profile.Id == Id).FirstOrDefault();
+           
+        }
+
+        public void Create(Profilo createProfile)
+        {
+            db.Profili.Add(createProfile);
+            db.SaveChanges();
         }
     }
 }

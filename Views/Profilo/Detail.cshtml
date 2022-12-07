@@ -13,8 +13,13 @@
             </div>
             <p>
                 <strong>Titolo:</strong>
-                @Model.Name @Model.Id
+                @Model.Name
             </p>
+
+            <div>
+                <a class="btn btn-primary" asp-action="Detail" asp-route-id="#">Modifica Nome</a>
+                <a class="btn btn-primary" asp-action="Detail" asp-route-id="#">Cancella Account</a>
+            </div>
         </div>
     </div>
 </div>

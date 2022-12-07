@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Crea profilo";
+}
+
+
+@model Profilo
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <h1 class="mt-3 mb-3">Nuovo Profilo</h1>
+            </div>
+            <form asp-controller="Profilo" asp-action="Create" method="post">
+
+              
+                <div class="mb-3">
+                    <strong>Titolo:</strong>
+                    <input asp-for="Name" class="d-block w-100" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+             
+
+
+                <div class="text-end">
+                    <input type="submit" class="btn btn-small btn-success" value="Salva">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
