@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using csharp_boolfix.Data;
 
@@ -11,9 +12,11 @@ using csharp_boolfix.Data;
 namespace csharpboolfix.Migrations
 {
     [DbContext(typeof(BoolflixDbContext))]
-    partial class BoolfixDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206223956_CreateIdentityTables")]
+    partial class CreateIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

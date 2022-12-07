@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Profili Netflix";
+}
+
+
+@model List<Profilo>
+
+
+    @if (Model.Count() == 0)
+    {
+        <h3 class="text-center"> Non hai ancora creato nessun profilo, crearne uno?</h3>
+    }
+    else
+    {
+        @foreach(Profilo profile in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                @*        <img class="card-img-top" src="..." alt="Card image cap">
+        *@        <div class="card-body">
+                    <h5 class="card-title">@profile.Id .  @profile.Name</h5>
+@*                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+*@                  <div>
+                       <a href="#" class="btn btn-primary">Vai al catalogo</a>
+                       <a class="btn btn-primary" href="@Url.Action("Detail", "Profilo", new { id = profile.Id })">Edit Profilo </a>
+                   </div>
+                </div>
+            </div>
+        }
+    }
+    

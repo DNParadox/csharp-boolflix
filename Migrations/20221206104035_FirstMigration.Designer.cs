@@ -10,7 +10,7 @@ using csharp_boolfix.Data;
 
 namespace csharpboolfix.Migrations
 {
-    [DbContext(typeof(BoolfixDbContext))]
+    [DbContext(typeof(BoolflixDbContext))]
     [Migration("20221206104035_FirstMigration")]
     partial class FirstMigration
     {

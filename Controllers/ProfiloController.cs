@@ -1,18 +1,40 @@
 ﻿using csharp_boolfix.Data;
+using csharp_boolfix.Models;
+using csharp_boolfix.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 
 namespace csharp_boolfix.Controllers
 {
     public class ProfiloController : Controller
     {
-        BoolfixDbContext db;
+        private BoolflixDbContext db;
 
+        IBoolflixRepository DbBoolflixRepository; 
 
+        public ProfiloController (IBoolflixRepository _boolflixRepository, BoolflixDbContext _db) : base()
+        {
+            db = _db;
+
+            DbBoolflixRepository = _boolflixRepository;
+        }
 
         public IActionResult Index()
         {
-            return View();
+            List<Profilo> profileList = DbBoolflixRepository.All();
+
+
+            return View(profileList);
+        }
+
+
+        public IActionResult Detail(int Id)
+        {
+            Profilo profileDetail = DbBoolflixRepository.GetById(Id);
+
+            return View(profileDetail);
         }
     }
 }

@@ -1,17 +1,25 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using csharp_boolfix.Data;
+using csharp_boolfix.Models.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 
 var connectionString = builder.Configuration.GetConnectionString("BoolfixDbContextConnection");
 
-builder.Services.AddDbContext<BoolfixDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    builder.Services.AddDbContext<BoolflixDbContext>(options =>
+        options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<BoolfixDbContext>();
+    builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<BoolflixDbContext>();
+
+
+
+
+builder.Services.AddScoped<IBoolflixRepository, DbBoolflixRepository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -40,6 +48,6 @@ app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Profilo}/{action=Index}/{id?}");
 
 app.Run();
