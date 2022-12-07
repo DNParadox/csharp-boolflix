@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Crea profilo";
+    ViewData["Title"] = "Modifica profilo";
 }
 
 
@@ -13,11 +13,11 @@
             <div class="d-flex align-items-center">
                 <h1 class="mt-3 mb-3">Nuovo Profilo</h1>
             </div>
-            <form asp-controller="Profilo" asp-action="Create" method="post">
+            <form asp-controller="Profilo" asp-action="Update"  asp-route-id="@Model.Id" method="post">
 
               
                 <div class="mb-3">
-                    <strong>Nome Profilo:</strong>
+                    <label asp-for="Name">Modifica Nome profilo: </label>
                     <input asp-for="Name" class="d-block w-100" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>

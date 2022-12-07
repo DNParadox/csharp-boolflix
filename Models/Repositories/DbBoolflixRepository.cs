@@ -32,5 +32,19 @@ namespace csharp_boolfix.Models.Repositories
             db.Profili.Add(createProfile);
             db.SaveChanges();
         }
+
+
+        public void Update(Profilo createProfile, Profilo updatedProfile)
+        {
+            createProfile.Name =  updatedProfile.Name;
+
+            db.SaveChanges();
+        }
+
+        public void Delete(Profilo profileToDelete)
+        {
+            db.Profili.Remove(profileToDelete);
+            db.SaveChanges();
+        }
     }
 }

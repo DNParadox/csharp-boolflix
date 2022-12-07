@@ -10,5 +10,9 @@ namespace csharp_boolfix.Models.Repositories
         Profilo GetById(int Id);
 
         void Create(Profilo createProfile);
+
+        void Update(Profilo createProfile,Profilo updatedProfile);
+
+        void Delete(Profilo profileToDelete);
     }
 }

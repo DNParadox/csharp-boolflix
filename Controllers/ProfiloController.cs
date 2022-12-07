@@ -62,5 +62,64 @@ namespace csharp_boolfix.Controllers
 
             return RedirectToAction("Index");
         }
+
+       
+        public IActionResult Update(int Id)
+        {
+            Profilo updateProfile = DbBoolflixRepository.GetById(Id);
+
+            if(updateProfile == null)
+            {
+                return NotFound();
+            }
+
+
+            Profilo updatedProfile = new Profilo();
+
+            updatedProfile = updateProfile;
+
+           
+
+            return View(updateProfile);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int Id, Profilo updateProfile)
+        {
+            updateProfile.Id = Id;
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            Profilo updatedProfile = DbBoolflixRepository.GetById(Id);
+
+            if (updatedProfile == null)
+            {
+                return NotFound();
+            }
+
+
+            DbBoolflixRepository.Update(updatedProfile, updateProfile);
+
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Delete(int Id)
+        {
+            Profilo profileToDelete = DbBoolflixRepository.GetById(Id);
+
+            if(profileToDelete == null)
+            {
+                return NotFound();
+            }
+
+            DbBoolflixRepository.Delete(profileToDelete);
+
+            return RedirectToAction("Index");
+        }
     }
 }

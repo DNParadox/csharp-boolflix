@@ -11,15 +11,21 @@
             <div class="d-flex align-items-center">
                 <h1 class="mt-3 mb-3">Dettagli Profilo</h1>
             </div>
+
             <p>
-                <strong>Titolo:</strong>
+                <strong>Nome profilo:</strong>
                 @Model.Name
             </p>
 
             <div>
-                <a class="btn btn-primary" asp-action="Detail" asp-route-id="#">Modifica Nome</a>
-                <a class="btn btn-primary" asp-action="Detail" asp-route-id="#">Cancella Account</a>
+                <a class="btn btn-primary" asp-action="Update" asp-route-id="@Model.Id">Modifica Nome</a>
             </div>
+
+            <form asp-controller="Profilo" asp-action="Delete" asp-route-id="@Model.Id" method="post">    
+                    <button type="submit" class="btn btn-danger">
+                        Cancella Account
+                    </button>
+            </form>
         </div>
     </div>
 </div>
